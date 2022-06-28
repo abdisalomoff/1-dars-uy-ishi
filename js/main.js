@@ -3479,7 +3479,7 @@ var pokemons = [
 
 function dom(array, node) {
   for (i of array) {
-    var newItam = document.createElement("li");
+    var newItem = document.createElement("li");
     var elImg = document.createElement("img");
     var elId = document.createElement("span");
     var elNum = document.createElement("span");
@@ -3494,21 +3494,21 @@ function dom(array, node) {
     var elMultipliers = document.createElement("span");
     var elWeaknesses = document.createElement("span");
 
-    node.appendChild(newItam);
-    // newList.appendChild(newItam);
-    newItam.appendChild(elImg);
-    newItam.appendChild(elId);
-    newItam.appendChild(elNum);
-    newItam.appendChild(elType);
-    newItam.appendChild(elHeight);
-    newItam.appendChild(elWeight);
-    newItam.appendChild(elCandy);
-    newItam.appendChild(elEgg);
-    newItam.appendChild(elSpawn);
-    newItam.appendChild(elAvg);
-    newItam.appendChild(elTime);
-    newItam.appendChild(elMultipliers);
-    newItam.appendChild(elWeaknesses);
+    node.appendChild(newItem);
+    // newList.appendChild(newItem);
+    newItem.appendChild(elImg);
+    newItem.appendChild(elId);
+    newItem.appendChild(elNum);
+    newItem.appendChild(elType);
+    newItem.appendChild(elHeight);
+    newItem.appendChild(elWeight);
+    newItem.appendChild(elCandy);
+    newItem.appendChild(elEgg);
+    newItem.appendChild(elSpawn);
+    newItem.appendChild(elAvg);
+    newItem.appendChild(elTime);
+    newItem.appendChild(elMultipliers);
+    newItem.appendChild(elWeaknesses);
 
     elId.textContent = `id: ${i.id}`;
     elNum.textContent = `num: ${i.num}`;
