@@ -1,4 +1,5 @@
 var elList = document.querySelector(`.list`);
+const elSelect = document.querySelector(`.select`);
 var pokemons = [
   {
     id: 1,
@@ -3476,52 +3477,71 @@ var pokemons = [
   },
 ];
 
-for (i of pokemons) {
-  var newItam = document.createElement("li");
-  var elImg = document.createElement("img");
-  var elId = document.createElement("span");
-  var elNum = document.createElement("span");
-  var elType = document.createElement("span");
-  var elHeight = document.createElement("span");
-  var elWeight = document.createElement("span");
-  var elCandy = document.createElement("span");
-  var elEgg = document.createElement("span");
-  var elSpawn = document.createElement("span");
-  var elAvg = document.createElement("span");
-  var elTime = document.createElement("span");
-  var elMultipliers = document.createElement("span");
-  var elWeaknesses = document.createElement("span");
+function dom(array, node) {
+  for (i of array) {
+    var newItam = document.createElement("li");
+    var elImg = document.createElement("img");
+    var elId = document.createElement("span");
+    var elNum = document.createElement("span");
+    var elType = document.createElement("span");
+    var elHeight = document.createElement("span");
+    var elWeight = document.createElement("span");
+    var elCandy = document.createElement("span");
+    var elEgg = document.createElement("span");
+    var elSpawn = document.createElement("span");
+    var elAvg = document.createElement("span");
+    var elTime = document.createElement("span");
+    var elMultipliers = document.createElement("span");
+    var elWeaknesses = document.createElement("span");
 
-  elList.appendChild(newItam);
-  newItam.appendChild(elImg);
-  newItam.appendChild(elId);
-  newItam.appendChild(elNum);
-  newItam.appendChild(elType);
-  newItam.appendChild(elHeight);
-  newItam.appendChild(elWeight);
-  newItam.appendChild(elCandy);
-  newItam.appendChild(elEgg);
-  newItam.appendChild(elSpawn);
-  newItam.appendChild(elAvg);
-  newItam.appendChild(elTime);
-  newItam.appendChild(elMultipliers);
-  newItam.appendChild(elWeaknesses);
+    node.appendChild(newItam);
+    // newList.appendChild(newItam);
+    newItam.appendChild(elImg);
+    newItam.appendChild(elId);
+    newItam.appendChild(elNum);
+    newItam.appendChild(elType);
+    newItam.appendChild(elHeight);
+    newItam.appendChild(elWeight);
+    newItam.appendChild(elCandy);
+    newItam.appendChild(elEgg);
+    newItam.appendChild(elSpawn);
+    newItam.appendChild(elAvg);
+    newItam.appendChild(elTime);
+    newItam.appendChild(elMultipliers);
+    newItam.appendChild(elWeaknesses);
 
-  elId.textContent = `id: ${i.id}`;
-  elNum.textContent = `num: ${i.num}`;
-  elImg.src = `${i.img}`;
-  elImg.setAttribute("class", "img");
-  elImg.setAttribute("alt", "pocemens");
-  elImg.setAttribute("weight", "150");
-  elImg.setAttribute("height", "150");
-  elType.textContent = `type: ${i.type}`;
-  elHeight.textContent = `height: ${i.height}`;
-  elWeight.textContent = `weight: ${i.weight}`;
-  elCandy.textContent = `candy: ${i.candy}`;
-  elEgg.textContent = `egg: ${i.egg}`;
-  elSpawn.textContent = `spawn_chance: ${i.spawn_chance}`;
-  elAvg.textContent = `avg_spawns: ${i.avg_spawns}`;
-  elTime.textContent = `spawn_time: ${i.spawn_time}`;
-  elMultipliers.textContent = `multipliers: ${i.multipliers}`;
-  elWeaknesses.textContent = `weaknesses: ${i.weaknesses}`;
+    elId.textContent = `id: ${i.id}`;
+    elNum.textContent = `num: ${i.num}`;
+    elImg.src = `${i.img}`;
+    elImg.setAttribute("class", "img");
+    elImg.setAttribute("alt", "pocemens");
+    elImg.setAttribute("weight", "150");
+    elImg.setAttribute("height", "150");
+    elType.textContent = `type: ${i.type}`;
+    elHeight.textContent = `height: ${i.height}`;
+    elWeight.textContent = `weight: ${i.weight}`;
+    elCandy.textContent = `candy: ${i.candy}`;
+    elEgg.textContent = `egg: ${i.egg}`;
+    elSpawn.textContent = `spawn_chance: ${i.spawn_chance}`;
+    elAvg.textContent = `avg_spawns: ${i.avg_spawns}`;
+    elTime.textContent = `spawn_time: ${i.spawn_time}`;
+    elMultipliers.textContent = `multipliers: ${i.multipliers}`;
+    elWeaknesses.textContent = `weaknesses: ${i.weaknesses}`;
+  }
 }
+
+dom(pokemons, elList);
+
+let result = [];
+elSelect.addEventListener(`change`, function () {
+  result = [];
+  elList.innerHTML = '';
+  let selectValue = elSelect.value;
+  pokemons.forEach((i) => {
+    if (i.type.includes(selectValue)) {
+      result.push(i);
+    }
+  });
+
+  dom(result, elList);
+});
