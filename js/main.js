@@ -3532,10 +3532,12 @@ function dom(array, node) {
 
 dom(pokemons, elList);
 
-let result = [];
+let newArray = [];
+
+var result = [];
 elSelect.addEventListener(`change`, function () {
   result = [];
-  elList.innerHTML = '';
+  elList.innerHTML = "";
   let selectValue = elSelect.value;
   pokemons.forEach((i) => {
     if (i.type.includes(selectValue)) {
@@ -3545,3 +3547,14 @@ elSelect.addEventListener(`change`, function () {
 
   dom(result, elList);
 });
+
+for (func of pokemons) {
+  newArray.push(...func.type);
+}
+
+let elSet = new Set(newArray);
+for (const item of Array.from(elSet)) {
+  let li = document.createElement("option");
+  li.textContent = item;
+  elSelect.appendChild(li);
+}
